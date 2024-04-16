@@ -2,19 +2,20 @@
 #define _data_structures_h 1
 #include <vector>
 
-
-typedef struct TAG_VERTEX{
-    int index;//to be used in heap
-    COLOR color; // color for discovered undiscovered 
-    double key; //
-    int pi;
-    int position;
-}VERTEX;
-typedef VERTEX *pVERTEX;
-
 typedef struct COLOR{
     char color;//color for vertex
 }COLOR;
+
+typedef struct TAG_VERTEX{
+    int index;
+    COLOR color; // color for discovered undiscovered 
+    double distance; //
+    int previous;
+    int position;
+    int heappos;
+}VERTEX;
+typedef VERTEX *pVERTEX;
+
 
 typedef struct TAG_NODE{
     int index; //position
@@ -25,25 +26,24 @@ typedef struct TAG_NODE{
 }NODE;
 typedef NODE *pNODE;
 
-typedef struct TAG_ELEMENT {
-    double key;
-    // other fields as you see fit
-}ELEMENT;
+typedef VERTEX ELEMENT;
+typedef ELEMENT *pELEMENT;
 
-typedef struct TAG_HEAP {
-    int capacity; /* capacity of the heap */
-    int size; /* current size of the heap */
-    VERTEX** A; /* array of pointers to ELEMENT */
-    // other fields as you see fit
+typedef struct TAG_HEAP{
+    int capacity;
+    int size;
+    pELEMENT *A;
 }HEAP;
 
 
+
 typedef struct TAG_STACK_NODE {
-    NODE* ver;
+    VERTEX* ver;
     TAG_STACK_NODE* next;
 } STACK_NODE;
 
 typedef struct TAG_STACK {
+    STACK_NODE** S; // Array of Stack nodes
     STACK_NODE* top; // Pointer to the top of the stack
     int size;        // Current size of the stack
 } STACK;

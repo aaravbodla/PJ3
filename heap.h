@@ -5,9 +5,9 @@
 extern int heapifycalls;
 void buildHeap(HEAP*,int);
 void heapify(HEAP*,int);
-void extractMin(HEAP*);
+pVERTEX extractMin(HEAP* h);
 void decreaseKey(HEAP*,int,double);
-void insertion(HEAP*,double);
+void insertion(HEAP*,pVERTEX);
 void printHeap(HEAP*);
 
 #endif
